@@ -1,0 +1,12 @@
+{
+  "BagPart": [
+    {
+      "displayType": "Detail",
+      "contentType": [ "CoverPage" ],
+      "place": "/Header",
+      "alternates": [ "Cover" ],
+      //"wrappers": [ "TextField_Title" ],
+      //"shape": "AnotherShape"
+    }
+  ]
+}

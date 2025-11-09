@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="@Orchard.CultureName()">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@RenderTitleSegments(Site.SiteName, "before")</title>
+    <link type="image/x-icon" rel="shortcut icon" href="/TheTheme/favicon.ico">
+    <script asp-name="bootstrap" version="4" at="Foot"></script>
+    <style asp-name="IGBeautyTheme-bootstrap-oc" version="1"></style>
+    <style asp-name="IGBeautyTheme" version="1"></style>
+    <style asp-name="font-awesome" version="5"></style>
+    <style asp-src="~/TheTheme/css/sticky-footer-navbar.css"></style>
+    <script asp-name="IGBeautyTheme" version="1" at="Foot"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <resources type="Meta" />
+    <resources type="HeadLink" />
+    <resources type="Stylesheet" />
+    <resources type="HeadScript" />
+    @await RenderSectionAsync("HeadMeta", required: false)
+</head>
+<body dir="@Orchard.CultureDir()">
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white ">
+            <div class="container-fluid">
+                <div class="row flex-fill">
+                    <div class="col-12 col-md-6 d-flex flex-row justify-content-between py-3">
+                        <a class="navbar-brand" href="~/#"><img class="h-100 w-75" src="~/IGBeautyTheme/images/logo.svg" /></a>
+
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="collapse navbar-collapse h-100" id="navbar">
+                            <menu alias="alias:main-menu" cache-id="main-menu" cache-fixed-duration="00:05:00" cache-tag="alias:main-menu" />
+                            <partial name="LoginMenu" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    @if (Model.Header != null)
+    {
+        DisplayAsync(Model.Header);
+    }
+    <div id="header">
+        @await RenderSectionAsync("Header", required: false)
+    </div>
+    <main role="main" class="container">
+        @await RenderSectionAsync("Messages", required: false)
+        @await RenderBodyAsync()
+    </main>
+    @await RenderSectionAsync("Footer", required: false)
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+          // Optional parameters
+          direction: 'horizontal',
+            loop: true,
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true
+          },
+
+          // Navigation arrows
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        })
+    </script>
+    <resources type="FootScript" />
+</body>
+</html>

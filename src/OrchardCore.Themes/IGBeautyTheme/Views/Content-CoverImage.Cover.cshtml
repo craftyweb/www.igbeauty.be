@@ -1,0 +1,27 @@
+@using OrchardCore.ContentManagement
+
+@{
+    ContentItem contentItem = Model.ContentItem;
+}
+        
+
+    <div class="swiper-slide h-100 w-100 position-relative">
+        <img class="d-block w-100" style="height:100%; object-fit: cover;" src="@Orchard.AssetUrl((string)contentItem.Content.CoverImage.Image.Paths.First)" alt="First slide">
+        <div style="position: absolute; top: 0; left:0; right:0; bottom: 0;">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12 text-center">
+                        <h1 class="text-uppercase" data-aos="fade-left" data-aos-once="false">@contentItem.Content.CoverImage.Title.Text</h1>
+                        <h4 class="text-muted">@contentItem.Content.CoverImage.SubTitle.Text</h4>
+                        @if (!string.IsNullOrEmpty((string)contentItem.Content.CoverImage.Action.Text))
+                        {
+                            <a class="btn btn-outline-dark">Test</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
